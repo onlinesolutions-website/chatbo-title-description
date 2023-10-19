@@ -1,17 +1,17 @@
 {
-  "name": "bsocial-video-title-description-generator",
-  "version": "1.0.0",
-  "description": "A simple interface to interact with the OpenAI API.",
-  "main": "server.js",
-  "scripts": {
-    "build": "node server.js",
-    "start": "echo 'Server already started during build.'"
-  },
-  "dependencies": {
-    "axios": "^0.24.0",
-    "body-parser": "^1.20.2",
-    "dotenv": "^10.0.0",
-    "express": "^4.18.2",
-    "path": "^0.12.7"
+    "name": "bsocial_video_title_description_generator",
+    "version": "1.0.0",
+    "description": "A tool to generate video titles and descriptions.",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.3",
+      "axios": "^0.24.0",
+      "body-parser": "^1.19.0",
+      "path": "^0.12.7",
+      "dotenv": "^10.0.0"
+    }
   }
-}
+  
