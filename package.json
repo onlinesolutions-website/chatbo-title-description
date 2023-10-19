@@ -4,7 +4,7 @@
   "description": "A simple interface to interact with the OpenAI API.",
   "main": "server.js",
   "scripts": {
-    "build": "echo 'No build step required.'",
+    "build": "echo \"No build step required.\"",
     "start": "node server.js"
   },
   "dependencies": {
