@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bSocial Video Title & Description Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Titles & Descriptions</h1>
+        <p>Enter up to 5 keywords, and the AI will generate video titles and a 100-word description based on your input.</p>
+        
+        <!-- Input box for user's prompt -->
+        <textarea class="form-control" id="userInput" placeholder="Enter your 5 keywords..."></textarea>
+
+        <!-- Message box for titles response -->
+        <div class="response-box" id="titlesResponse">
+            <h3>Video Titles</h3>
+            <p></p>
+        </div>
+
+        <!-- Message box for description response -->
+        <div class="response-box" id="descriptionResponse">
+            <h3>Description</h3>
+            <p></p>
+        </div>
+
+        <!-- Submit button -->
+        <button class="btn-primary" onclick="submitPrompt()">Submit</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
