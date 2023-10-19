@@ -7,23 +7,32 @@ submitButton.addEventListener('click', async () => {
     const keywords = keywordsInput.value.split(',').slice(0, 5); // Take up to 5 keywords
     const prompt = `Generate a video title and a 100-word description based on these keywords: ${keywords.join(', ')}`;
 
-    // Call OpenAI API (make sure to handle this securely in a real-world scenario)
-    const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ prompt })
-    });
+    try {
+        // Call OpenAI API securely (server-side implementation)
+        const response = await fetch('/api/generate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ prompt }),
+        });
 
-    const data = await response.json();
-    const generatedText = data.choices[0].text.trim().split('\n');
-    const title = generatedText[0];
-    const description = generatedText.slice(1).join(' ');
+        if (!response.ok) {
+            throw new Error('Failed to fetch data from the API');
+        }
 
-    titleDiv.textContent = title;
-    descriptionDiv.textContent = description;
+        const data = await response.json();
+        const generatedText = data.choices[0].text.trim().split('\n');
+        const title = generatedText[0];
+        const description = generatedText.slice(1).join(' ');
 
-    titleDiv.style.display = 'block';
-    descriptionDiv.style.display = 'block';
+        titleDiv.textContent = title;
+        descriptionDiv.textContent = description;
+
+        titleDiv.style.display = 'block';
+        descriptionDiv.style.display = 'block';
+    } catch (error) {
+        console.error('An error occurred:', error);
+        // Handle the error gracefully (e.g., show an error message to the user)
+    }
 });
