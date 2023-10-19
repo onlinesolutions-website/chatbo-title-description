@@ -1,11 +1,12 @@
 {
-  "name": "openai-api-interface",
+  "name": "bsocial-video-title-description-generator",
+
   "version": "1.0.0",
   "description": "A simple interface to interact with the OpenAI API.",
   "main": "server.js",
   "scripts": {
-    "build": "echo \"No build step required.\"",
-    "start": "node server.js"
+    "build": "node server.js",
+    "start": "echo 'Server already started during build.'"
   },
   "dependencies": {
     "axios": "^0.24.0",
