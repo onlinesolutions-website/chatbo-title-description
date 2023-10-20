@@ -1,8 +1,8 @@
 // Get references to HTML elements
-const keywordsInput = document.getElementById('keywords');
-const submitButton = document.getElementById('submit');
-const titleDiv = document.getElementById('title');
-const descriptionDiv = document.getElementById('description');
+const keywordsInput = document.getElementById('userInput');
+const submitButton = document.getElementById('submitBtn');
+const titleDiv = document.getElementById('titlesResponse').querySelector('p');
+const descriptionDiv = document.getElementById('descriptionResponse').querySelector('p');
 
 // Add an event listener to the submit button
 submitButton.addEventListener('click', async () => {
@@ -38,9 +38,6 @@ submitButton.addEventListener('click', async () => {
         titleDiv.textContent = title;
         descriptionDiv.textContent = description;
 
-        // Show the title and description elements
-        titleDiv.style.display = 'block';
-        descriptionDiv.style.display = 'block';
     } catch (error) {
         // Handle errors gracefully, e.g., log them to the console
         console.error('An error occurred:', error);
