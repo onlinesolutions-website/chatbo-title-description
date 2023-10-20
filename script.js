@@ -10,7 +10,7 @@ submitButton.addEventListener('click', async () => {
     const keywords = keywordsInput.value.split(',').slice(0, 5);
     
     // Construct a prompt using the keywords
-    const prompt = `Generate a video title and a 100-word description based on these keywords: ${keywords.join(', ')}`;
+    const promptText = `Generate a video title and a 100-word description based on these keywords: ${keywords.join(', ')}`;
 
     try {
         // Make an API request to OpenAI
@@ -19,7 +19,7 @@ submitButton.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ prompt })
+            body: JSON.stringify({ prompt: promptText })
         });
 
         if (!response.ok) {
@@ -37,7 +37,6 @@ submitButton.addEventListener('click', async () => {
         // Display the title and description in their respective HTML elements
         titleDiv.textContent = title;
         descriptionDiv.textContent = description;
-
     } catch (error) {
         // Handle errors gracefully, e.g., log them to the console
         console.error('An error occurred:', error);
