@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 dotenv.config();
 
@@ -11,12 +12,15 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Endpoint to handle requests from the frontend
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Route to handle the generation request
 app.post('/api/generate', async (req, res) => {
     const { prompt } = req.body;
 
     try {
-        const openaiResponse = await axios.post('https://api.openai.com/v1/engines/davinci/completions', {
+        const openAIResponse = await axios.post('https://api.openai.com/v1/engines/davinci/completions', {
             prompt: prompt,
             max_tokens: 150
         }, {
@@ -26,10 +30,16 @@ app.post('/api/generate', async (req, res) => {
             }
         });
 
-        res.json(openaiResponse.data);
+        res.json(openAIResponse.data);
     } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch data from the OpenAI API' });
+        console.error('Error calling OpenAI API:', error);
+        res.status(500).json({ error: 'Failed to fetch data from the API' });
     }
+});
+
+// Catch-all route to serve the frontend
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
